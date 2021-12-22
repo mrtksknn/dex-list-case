@@ -1,4 +1,4 @@
-;[
+export default [
   {
     char_id: 1,
     name: 'Walter White',
