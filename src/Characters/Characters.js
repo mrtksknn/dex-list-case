@@ -69,7 +69,7 @@ const Characters = (props) => {
           <Card style={{display: 'flex', borderRadius: '10px'}}>
             <CardMedia
               component="img"
-              height="500"
+              height="520"
               style={{width: '50%'}}
               image={img}
               alt={name}
