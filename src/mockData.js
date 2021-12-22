@@ -1,4 +1,4 @@
-export default [
+const characters = [
   {
     char_id: 1,
     name: 'Walter White',
@@ -814,3 +814,5 @@ export default [
     better_call_saul_appearance: [4, 5],
   },
 ]
+
+export default characters;
