@@ -4,7 +4,6 @@ import {
   Toolbar, 
   Grid, 
   Card, 
-  CardMedia, 
   CardContent,
   CircularProgress,
   Typography
@@ -27,18 +26,21 @@ const useStyles = makeStyles ({
   }
 })
 
-const CharactersList = () => {
+const CharactersList = props => {
+  const { history } = props;
   const classes = useStyles();
-  const [charactersData, setCharactersData] = useState(mockData);
+  const [charactersData] = useState(mockData);
 
+  // characters card function
   const getCharactersCard = (charactersId) => {
     const { char_id, name } = charactersData[`${charactersId}`];
     const sprite = charactersData[`${charactersId}`].img;
 
     return (
       <Grid item xs={4} key={charactersId}>
-        <Card>
+        <Card onClick={() => history.push(`${char_id}`)}>
           <img
+          alt="characters"
             className = {classes.cardMedia}
             src={sprite}
             srcSet={sprite}
@@ -52,6 +54,7 @@ const CharactersList = () => {
     )
   }
 
+  // main function
   return (
     <>
       <AppBar position="static">
