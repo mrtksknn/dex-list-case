@@ -23,6 +23,14 @@ const useStyles = makeStyles ({
     display: 'flex', 
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  content: {
+    width: '100%',
+    display: 'flex !important',
+    padding: '20px !important',
+    flexDirection: 'column !important',
+    justifyContent: 'space-between !important',
+    alignItems: 'inherit'
   }
 })
 
@@ -66,7 +74,7 @@ const Characters = (props) => {
               image={img}
               alt={name}
             />
-          <CardContent style={{width: '100%', paddingBottom: '0'}}>
+          <CardContent className={classes.content}>
             <Typography 
               gutterBottom 
               variant="h3" 

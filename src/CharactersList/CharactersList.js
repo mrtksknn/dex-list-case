@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { 
-  AppBar, 
-  Toolbar, 
   Grid, 
   Card, 
   CardContent,
   CircularProgress,
   Typography
 } from "@material-ui/core";
-import mockData from '../mockData';
+import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles ({
@@ -19,7 +17,8 @@ const useStyles = makeStyles ({
   },
   cardMedia: {
     margin: "auto",
-    objectFit: "fill"
+    objectFit: "fill",
+    height: "400px !important"
   },
   cardContent: {
     textAlign: "center"
@@ -29,12 +28,29 @@ const useStyles = makeStyles ({
 const CharactersList = props => {
   const { history } = props;
   const classes = useStyles();
-  const [charactersData] = useState(mockData);
+  const [charactersData, setCharactersData] = useState({});
+
+  // getting characters data
+  useEffect(() => {
+    axios
+    .get('https://www.breakingbadapi.com/api/characters')
+    .then(function (response) {
+      const { data } = response;
+      const newCharactersData = {};
+      data.forEach((character, index) => {
+        newCharactersData[index + 1] = {
+          char_id: index + 1,
+          name: character.name,
+          sprite: character.img
+        };
+      });
+      setCharactersData(newCharactersData);
+    });
+  }, []);
 
   // characters card function
   const getCharactersCard = (charactersId) => {
-    const { char_id, name } = charactersData[`${charactersId}`];
-    const sprite = charactersData[`${charactersId}`].img;
+    const { char_id, name, sprite } = charactersData[charactersId];
 
     return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={charactersId}>
@@ -57,11 +73,8 @@ const CharactersList = props => {
   // main function
   return (
     <>
-      <AppBar position="static">
-        <Toolbar />
-      </AppBar>
       {charactersData ? (
-        <Grid container spacing={5} className={classes.CharactersContainer}>
+        <Grid container spacing={10} className={classes.CharactersContainer}>
           {Object.keys(charactersData).map(charactersId => 
               getCharactersCard(charactersId)
             )}
