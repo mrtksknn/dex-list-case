@@ -66,7 +66,7 @@ const Characters = (props) => {
               image={img}
               alt={name}
             />
-          <CardContent style={{width: '100%'}}>
+          <CardContent style={{width: '100%', paddingBottom: '0'}}>
             <Typography 
               gutterBottom 
               variant="h3" 
