@@ -37,7 +37,7 @@ const CharactersList = props => {
     const sprite = charactersData[`${charactersId}`].img;
 
     return (
-      <Grid item xs={4} key={charactersId}>
+      <Grid item xs={12} sm={6} md={4} lg={3} key={charactersId}>
         <Card onClick={() => history.push(`${char_id}`)}>
           <img
           alt="characters"
