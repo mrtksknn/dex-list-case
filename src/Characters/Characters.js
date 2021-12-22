@@ -30,7 +30,8 @@ const useStyles = makeStyles ({
     padding: '20px !important',
     flexDirection: 'column !important',
     justifyContent: 'space-between !important',
-    alignItems: 'inherit'
+    alignItems: 'inherit',
+    backgroundColor: '#ffffff7a'
   }
 })
 

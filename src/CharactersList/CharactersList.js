@@ -15,6 +15,11 @@ const useStyles = makeStyles ({
     paddingLeft: "50px",
     paddingRight: "50px"
   },
+  card: {
+    '&:hover': {
+      backgroundColor: '#5e5e5e54'
+    },
+  },
   cardMedia: {
     margin: "auto",
     objectFit: "fill",
@@ -54,7 +59,7 @@ const CharactersList = props => {
 
     return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={charactersId}>
-        <Card onClick={() => history.push(`${char_id}`)}>
+        <Card onClick={() => history.push(`${char_id}`)} className={classes.card}>
           <img
           alt="characters"
             className = {classes.cardMedia}
